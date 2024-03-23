@@ -1,0 +1,14 @@
+{
+  "name": "objektaind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "objektai1": "node --watch ./nd/objektai1.js",
+    "objektai2": "node --watch ./nd/objektai2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jongita <jurgitajonaityte@gmail.com> (https://github.com/jongita)",
+  "license": "MIT"
+}
