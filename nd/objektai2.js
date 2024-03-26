@@ -41,36 +41,55 @@ console.log('---------------------------');
 
 const tree = {
     name: 'John',
-    children: [
-        {
-            name: 'Jim',
-            children: []
-        },
-        {
-            name: 'Zoe',
-            children: [
-                { name: 'Kyle', children: [] },
-                { name: 'Sophia', children: [] }
-            ]
-        }
-    ]
-}
-
-function depthOf(object) {
-    let level = 0;
-    let key;
-    for (key in object) {
-        if (!object.hasOwnProperty(key)) continue;
-
-        if (typeof object[key] == 'object') {
-            let depth = depthOf(object[key]) + 1;
-            level = Math.max(depth, level);
+    children1: {
+        name: 'Jim',
+        children: []
+    },
+    children2:
+    {
+        name: 'Zoe',
+        children3: {
+            name: 'Kyle', children4: [],
+            name: 'Sophia', children5: []
         }
     }
-    return level;
 }
 
-console.log(depthOf(tree));
+// function depthOf(object) {
+//     let level = 0;
+//     let key;
+//     for (key in object) {
+//         if (!object.hasOwnProperty(key)) continue;
+
+//         if (typeof object[key] == 'object') {
+//             let depth = depthOf(object[key]) + 1;
+//             level = Math.max(depth, level);
+//         }
+//     }
+//     return level;
+// }
+
+// console.log(depthOf(tree));
+
+function findMaxDepth(obj) {
+    let maxDepth = 0;
+
+    function intoDeep(obj, depth) {
+        for (let key in obj) {
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+                intoDeep(obj[key], depth + 1);
+            }
+        }
+        if (depth > maxDepth) {
+            maxDepth = depth;
+        }
+    }
+
+    intoDeep(obj, 1);
+    return maxDepth;
+}
+
+console.log(`Giliausias masyvas ${findMaxDepth(tree)} lygyje.`);
 
 // function printChildrenRecursive(t) {
 //     if (t.children.length === 0) {
