@@ -181,3 +181,50 @@ console.log('-------------------------');
 // 8. Objekto Konversija Į Masyvą: Sukurkite funkciją, kuri objektą(raktai ir reikšmės) konvertuotų į masyvą, kur kiekvienas elementas būtų[raktas, reikšmė] pora.
 
 
+const newArray = Object.keys(prekesEur).map((key) => [key, prekesEur[key]]);
+
+console.log(newArray);
+
+// const newArray = Object.entries(prekesEur);
+// console.log(newArray);
+
+// 9. Dinaminis Objekto Sudarymas: Naudodami for ciklą, sukurti objektą, kurio raktai yra skaičiai nuo 1 iki n, o reikšmės - tie skaičiai pakelti kvadratu.
+
+const n = 10;
+let resultObj = {};
+for (let i = 1; i <= n; i++) {
+    resultObj[i] = i ** 2;
+}
+console.log(resultObj);
+
+
+// 10. Sąlyginės Reikšmės Objekte: Turite objektą, kuriame saugomos įvairios vartotojų savybės(pvz., vardas, amžius, miestas).Sukurkite funkciją, kuri naudojant for in ciklą, pakeistų tam tikrų savybių reikšmes, jeigu jos tenkina nurodytą sąlygą(pvz., jeigu vartotojo amžius yra mažesnis nei 18, pridėkite savybę pilnametis: false).
+
+const persons = {
+    person1: {
+        vardas: 'John',
+        amzius: 20,
+        miestas: 'Klaipeda'
+    },
+    person2: {
+        vardas: 'Sophia',
+        amzius: 15,
+        miestas: 'Kaunas'
+    },
+    person3: {
+        vardas: 'Maria',
+        amzius: 17,
+        miestas: 'Vilnius'
+    }
+}
+
+function ageLimit(obj) {
+    for (let key in obj) {
+        if (obj[key].amzius < 18) {
+            obj[key].pilnametis = false;
+        }
+    }
+    return obj;
+}
+
+console.log(ageLimit(persons));
